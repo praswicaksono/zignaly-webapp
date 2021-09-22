@@ -30,7 +30,7 @@ jobs:
         -   name: Build
             run: npm run build:test
         -   name: Copy codedeploy config
-            run: cp appspec.yml public/appspec.yml
+            run: cp appspec.yml public/appspec.yml && cp -R scripts public/
         -   name: AWS CodeDeploy
             uses: sourcetoad/aws-codedeploy-action@v1
             with:
