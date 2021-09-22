@@ -31,7 +31,7 @@ jobs:
                 codedeploy_group: zignaly-frontend-prod
                 codedeploy_register_only: false
                 s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
-                s3_folder: prod
+                s3_folder: dev
                 max_polling_iterations: 60
       # - name: Setup Node.js
       #   uses: actions/setup-node@v1
