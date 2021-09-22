@@ -21,6 +21,12 @@ jobs:
         -   name: Get release SHA
             run: echo ${{ github.sha }} > version.txt
 
+        -   name: Setup Node.js
+            uses: actions/setup-node@v1
+            with:
+                node-version: 12
+        -   name: Install Dependencies
+            run: npm ci
         -   name: AWS CodeDeploy
             uses: sourcetoad/aws-codedeploy-action@v1
             with:
@@ -28,22 +34,16 @@ jobs:
                 aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
                 aws_region: ap-northeast-1
                 codedeploy_name: zignaly
-                codedeploy_group: frontend-dev-zignaly-prod-1
+                codedeploy_group: zignaly-frontend-prod
                 codedeploy_register_only: false
                 s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
                 s3_folder: dev
                 max_polling_iterations: 60
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: 12
       # - uses: webfactory/ssh-agent@v0.4.1
       #   with:
       #     ssh-private-key: ${{ secrets.SSH_PRIVATE_TV_KEY }}
       # - name: Install submodules
       #   run: git submodule update --init
-      # - name: Install Dependencies
-      #   run: npm ci
       # - name: Test
       #   env:
       #     GATSBY_API_TEST_USER: ${{ secrets.GATSBY_API_TEST_USER }}
