@@ -27,6 +27,8 @@ jobs:
                 node-version: 12
         -   name: Install Dependencies
             run: npm ci
+        -   name: Build
+            run: npm run build:test
         -   name: AWS CodeDeploy
             uses: sourcetoad/aws-codedeploy-action@v1
             with:
