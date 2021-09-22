@@ -29,6 +29,8 @@ jobs:
             run: npm ci
         -   name: Build
             run: npm run build:test
+        -   name: Copy codedeploy config
+            run: cp appspec.yml public/appspec.yml
         -   name: AWS CodeDeploy
             uses: sourcetoad/aws-codedeploy-action@v1
             with:
@@ -41,7 +43,7 @@ jobs:
                 s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
                 s3_folder: dev
                 max_polling_iterations: 60
-                directory: ./public
+                directory: public
       # - uses: webfactory/ssh-agent@v0.4.1
       #   with:
       #     ssh-private-key: ${{ secrets.SSH_PRIVATE_TV_KEY }}
