@@ -41,6 +41,7 @@ jobs:
                 s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
                 s3_folder: dev
                 max_polling_iterations: 60
+                directory: ./public
       # - uses: webfactory/ssh-agent@v0.4.1
       #   with:
       #     ssh-private-key: ${{ secrets.SSH_PRIVATE_TV_KEY }}
