@@ -8,6 +8,8 @@ jobs:
     name: Webapp Beta Release
     runs-on: ubuntu-latest
     steps:
+        -   name: Checkout
+            uses: actions/checkout@v1
         -   name: Configure deployment folder
             run: |
                 sed -i -e 's/{directory}/${{ secrets.TEST_RELEASE_DIR }}/g' appspec.yml
@@ -31,8 +33,6 @@ jobs:
                 s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
                 s3_folder: prod
                 max_polling_iterations: 60
-      # - name: Checkout
-      #   uses: actions/checkout@v1
       # - name: Setup Node.js
       #   uses: actions/setup-node@v1
       #   with:
