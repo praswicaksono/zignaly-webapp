@@ -28,7 +28,7 @@ jobs:
                 aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
                 aws_region: ap-northeast-1
                 codedeploy_name: zignaly
-                codedeploy_group: zignaly-frontend-prod
+                codedeploy_group: frontend-dev-zignaly-prod-1
                 codedeploy_register_only: false
                 s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
                 s3_folder: dev
